@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Memorify{% endblock %}
+
+{% block body %}
+<div class="text-center my-10">
+        <span class="font-semibold text-white text-3xl shadow-lg">
+            Journées
+        </span>
+    </div>
+<div class="grid grid-cols-3 items-stretch border-black border-8 mx-48 rounded-2xl bg-fuchsia-950">
+    {% for folder in folders %}
+        <div class="text-center my-10 mx-10">
+            <h2 class="font-semibold text-white text-2xl mb-3">{{ folder.name }}</h2>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                    {% for image in folder.images %}
+                        <div class="swiper-slide">
+                            <img src="{{ image }}" alt="photo" class="w-full h-auto object-cover border-black border-8 rounded-2xl">
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>
+
+<script>
+    // Initialize Swiper
+    const swiperContainers = document.querySelectorAll('.swiper-container');
+
+    swiperContainers.forEach(container => {
+        const swiper = new Swiper(container, {
+            slidesPerView: 1, // Show one slide at a time
+            spaceBetween: 10,
+            loop: true, // Optional: loop through slides
+            autoplay: {
+                delay: 10000, // Delay between slides in milliseconds
+                disableOnInteraction: false, // Continue autoplay after user interactions
+            },
+            effect: 'fade', // Optional: use fade effect to hide slides
+            fadeEffect: {
+                crossFade: true,
+            },
+        });
+    });
+</script>
+{% endblock %}

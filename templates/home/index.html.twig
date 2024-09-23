@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Memorify{% endblock %}
+
+{% block body %}
+<div>
+    <div class="text-center my-10">
+        <span class="font-semibold text-white text-3xl shadow-lg">
+            Memorify
+        </span>
+    </div>
+    <div class="grid grid-cols-3 items-stretch border-black border-8 mx-48 rounded-2xl bg-fuchsia-950">
+        {% for image in images %}
+            <img src="{{ image }}" alt="photo" class="w-72 h-5/6 object-cover mx-auto my-5 border-black border-8 rounded-2xl my-10">
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
